@@ -1,32 +1,17 @@
-name: Login API Workflow
+name: Automated API tests using Postman CLI
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: push
 
 jobs:
-  test-login-api:
+  automated-api-tests:
     runs-on: ubuntu-latest
-
     steps:
-      # Check out the code
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      # Set up Node.js
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-
-      # Install dependencies
-      - name: Install dependencies
-        run: npm install
-
-      # Run the login test
-      - name: Run login API test
-        run: npm test
+      - uses: actions/checkout@v4
+      - name: Install Postman CLI
+        run: |
+          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+      - name: Login to Postman CLI
+        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+      - name: Run API tests
+        run: |
+          postman collection run "${{ github.workspace }}/postman/collections/Login.json" -e "9797408-be925b13-5796-4b03-8d0f-e8e61fb3cbf2"
