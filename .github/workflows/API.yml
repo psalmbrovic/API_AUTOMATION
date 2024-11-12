@@ -44,7 +44,7 @@ jobs:
       # Upload the Newman HTML report as an artifact
       - name: Upload Newman Report
         if: always()  # Ensures the report is uploaded even if tests fail
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: newman-report
           path: newman-report.html
