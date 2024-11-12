@@ -39,7 +39,11 @@ jobs:
           newman run "${{ github.workspace }}/postman/collections/Login.json" \
             -e "${{ github.workspace }}/postman/environments/YourEnvironmentFile.json" \
             --reporters cli,html \
-            --reporter-html-export newman-report.html
+            --reporter-html-export $GITHUB_WORKSPACE/newman-report.html
+
+      # Debugging: List files in the current directory
+      - name: List Files
+        run: ls -l
 
       # Upload the Newman HTML report as an artifact
       - name: Upload Newman Report
@@ -47,4 +51,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: newman-report
-          path: newman-report.html
+          path: $GITHUB_WORKSPACE/newman-report.html
