@@ -37,7 +37,7 @@ jobs:
       - name: Run API tests with Newman
         run: |
           newman run "${{ github.workspace }}/postman/collections/Login.json" \
-            -e "${{ github.workspace }}postman/environments/Gamma.json" \
+            -e "${{ github.workspace }}/postman/environments/Gamma.json" \
             --reporters cli,html \
             --reporter-html-export newman-report.html
 
