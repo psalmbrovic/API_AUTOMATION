@@ -114,9 +114,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/v2/dashboard/merchants/login",
+					"raw": "{{prod_url}}/v2/dashboard/merchants/login",
 					"host": [
-						"{{base_url}}"
+						"{{prod_url}}"
 					],
 					"path": [
 						"v2",
