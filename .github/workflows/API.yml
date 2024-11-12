@@ -36,8 +36,8 @@ jobs:
       # Run API tests with Newman as an alternative
       - name: Run API tests with Newman
         run: |
-          newman run "${{ github.workspace }}/API_AUTOMATION/blob/DEMO_TEST/postman/collections/Login.json" \
-            -e "${{ github.workspace }}/API_AUTOMATION/blob/DEMO_TEST/postman/collections/Login.json" \
+          newman run "${{ github.workspace }}/postman/collections/Login.json" \
+            -e "${{ github.workspace }}/postman/collections/Login.json" \
             --reporters cli,html \
             --reporter-html-export newman-report.html
 
