@@ -39,7 +39,7 @@ jobs:
           newman run "${{ github.workspace }}/postman/collections/Login.json" \
             -e "${{ github.workspace }}/postman/environments/YourEnvironmentFile.json" \
             --reporters cli,html \
-            --reporter-html-export /Users/samueladeshinaabatan/newman/newman-report.html
+            --reporter-html-export ./reports/demo_test_report.html
 
       # Debugging: List files in the current directory
       - name: List Files
@@ -50,5 +50,5 @@ jobs:
         if: always()  # Ensures the report is uploaded even if tests fail
         uses: actions/upload-artifact@v3
         with:
-          name: newman-report
+          name: demo_test-report
           path: /Users/samueladeshinaabatan/newman/newman-report.html
